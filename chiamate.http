@@ -1,0 +1,38 @@
+// Chiamata di ricerca con parametro -s => terminator
+GET https://www.omdbapi.com/?apikey=f6e1faa9&s=terminator HTTP/1.1
+
+###
+
+// Chiamata di dettaglio di un singolo movie 
+GET https://www.omdbapi.com/?apikey=f6e1faa9&i=tt0103064
+
+
+###
+
+// Chiamata di ricerca con parametro -s => nightmare SECONDA pagina
+
+GET https://www.omdbapi.com/?apikey=f6e1faa9&s=nightmare&page=2
+
+###
+
+// Chiamata di ricerca con parametro -s => terminator SOLO per i MOVIE
+
+GET https://www.omdbapi.com/?apikey=f6e1faa9&s=terminator&type=movie HTTP/1.1
+
+###
+
+// Chiamata di ricerca con parametro -s => terminator SOLO per i SERIES
+
+GET https://www.omdbapi.com/?apikey=f6e1faa9&s=terminator&type=series HTTP/1.1
+
+###
+
+// Chiamata di ricerca con parametro -s => terminator SOLO per i GAME
+
+GET https://www.omdbapi.com/?apikey=f6e1faa9&s=terminator&type=game HTTP/1.1
+
+
+###
+
+// Chiamata di ricerca con parametro -s => avengers
+GET https://www.omdbapi.com/?apikey=f6e1faa9&s=avengers HTTP/1.1

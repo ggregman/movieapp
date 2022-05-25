@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script type="module">
+        /*
+                import {pippo} from "./js/modulo-api.js"
+                //console.log(pippo);
+                window.pippo=pippo;
+        */
+
+        import { somma, divisione } from "./js/modulo-api.js"
+        window.somma = somma;
+        window.divisione = divisione;
+
+    //    console.log(somma(5,5))
+
+    import {listAvengers} from "./js/modulo-api.js";
+
+    console.log("Inizio esecuzione...");
+    listAvengers();
+    console.log("Fine esecuzione...")
+
+    </script>
+
+    <button onclick="console.log(somma(5,10))">5 + 10</button>
+    <button onclick="console.log(divisione(5,10))">5 / 10</button>
+</body>
+
+</html>

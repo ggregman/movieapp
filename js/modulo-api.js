@@ -17,7 +17,7 @@ export const listAvengersSeries = () => {
 };
 */
 
-import {BASE_URL} from "./config.js";
+import { BASE_URL } from "./config.js";
 
 export const apiList = (s, type) => {
     const url = BASE_URL + `s=${s}&type=${type}`;
@@ -25,6 +25,25 @@ export const apiList = (s, type) => {
         .then((response) => response.json())
         .then((results) => {
             const items = results.Search;
-            console.log(items);
+            viewItems(items);
         })
+};
+
+const viewItems = (items) => {
+
+   // 1. Ciclare l'array   
+    items.map((item) => {
+
+    // 2. Estrapolare ogni item
+
+    // 3. Estrapolare solo le proprietà che ti servono
+    //    le proprietà sono Title, Year, Poster, Type
+            console.group();
+            console.log(item.Title);
+            console.log(item.Year);
+            console.log(item.Poster);
+            console.log(item.Type);
+            console.groupEnd();
+        })
+
 };

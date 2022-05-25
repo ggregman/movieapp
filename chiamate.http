@@ -36,3 +36,7 @@ GET https://www.omdbapi.com/?apikey=f6e1faa9&s=terminator&type=game HTTP/1.1
 
 // Chiamata di ricerca con parametro -s => avengers
 GET https://www.omdbapi.com/?apikey=f6e1faa9&s=avengers HTTP/1.1
+
+###
+
+GET https://www.omdbapi.com/?apikey=f6e1faa9&s=avengers&type=series HTTP/1.1

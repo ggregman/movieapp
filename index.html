@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="chrome">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
@@ -16,23 +16,27 @@
                 import {pippo} from "./js/modulo-api.js"
                 //console.log(pippo);
                 window.pippo=pippo;
-        */
+       
 
         import { somma, divisione } from "./js/modulo-api.js"
         window.somma = somma;
         window.divisione = divisione;
-
+        
         //    console.log(somma(5,5))
-
-        //   import {listAvengers} from "./js/modulo-api.js";
-        import { listAvengersSeries } from "./js/modulo-api.js";
+        */
+        import { apiList } from "./js/modulo-api.js";
+        import { CONTENT_TYPE } from "./js/config.js";
+      //  import { URL_LIST_AVENGERS,URL_LIST_AVENGERS_SERIES } from "./js/modulo-api.js";
+      //  import { listAvengersSeries } from "./js/modulo-api.js";
 
         console.log("Inizio esecuzione...");
-        // listAvengers();
-        listAvengersSeries();
+        //listAvengers();
+        //listAvengersSeries();
+        apiList("avengers","series")
         console.log("Fine esecuzione...");
 
     </script>
+    
 
     <button onclick="console.log(somma(5,10))">5 + 10</button>
     <button onclick="console.log(divisione(5,10))">5 / 10</button>

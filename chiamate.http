@@ -40,3 +40,7 @@ GET https://www.omdbapi.com/?apikey=f6e1faa9&s=avengers HTTP/1.1
 ###
 
 GET https://www.omdbapi.com/?apikey=f6e1faa9&s=avengers&type=series HTTP/1.1
+
+###
+
+GET https://www.omdbapi.com/?apikey=f6e1faa9&s=venom&type=movie HTTP/1.1

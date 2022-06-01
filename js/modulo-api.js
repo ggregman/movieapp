@@ -17,6 +17,7 @@ export const listAvengersSeries = () => {
 };
 */
 
+/*
 import { BASE_URL } from "./config.js";
 
 export const apiList = (s, type) => {
@@ -28,6 +29,7 @@ export const apiList = (s, type) => {
             viewItems(items);
         })
 };
+
 
 const viewItems = (items) => {
 
@@ -45,5 +47,77 @@ const viewItems = (items) => {
             console.log(item.Type);
             console.groupEnd();
         })
+*/
+
+/* **************
+
+import { BASE_URL } from "./config.js";
+
+export const apiList = (s, type) => {
+    const url = BASE_URL + `s=${s}&type=${type}`;
+    fetch(url)
+        .then((response) => response.json())
+        .then((results) => {
+            const items = results.Search;
+            viewItems(items);
+        })
+};
+
+const viewItems = (items) => {
+    // mi posiziono dove voglio mettere l'elenco dei movies
+    const element = document.getElementById("movies");
+    // ciclare l'array
+    items.map((item) => {
+        // creo il movie all'interno dell'array
+        element.appendChild(createHTMLmovie(item));
+    });
+};
+
+
+const createHTMLmovie = (movie) => {
+    // creo un tag p vuoto
+    const para = document.createElement("p");
+    // creo un testo con il titolo del film
+    const node = document.createTextNode(movie.Title);
+    // inserisco dentro al tag p il testo
+    para.appendChild(node);
+
+    return para;
+};
+
+
+*/
+
+import { BASE_URL } from "./config.js";
+
+export const apiList = (s, type) => {
+    const url = BASE_URL + `s=${s}&type=${type}`;
+    fetch(url)
+        .then((response) => response.json())
+        .then((results) => {
+            const items = results.Search;
+            viewItems(items);
+        })
+};
+
+const viewItems = (items) => {
+    //Mi posiziono dove voglio mettere l'elenco dei movies
+    const element = document.getElementById("movies");
+    //Cicla l'array
+    items.map((item) => {
+        //Creo il movie all'interno del DOM
+        element.appendChild(createHTMLMovie(item));
+    });
+};
+
+const createHTMLMovie = (movie) => {
+    //Creo un tag P vuoto
+    const para = document.createElement("p");
+    //Creo un testo con il titolo del movie
+    const node = document.createTextNode(movie.Title);
+    //Inserisco dentro al tag P il testo
+    para.appendChild(node);
+
+    return para;
 
 };

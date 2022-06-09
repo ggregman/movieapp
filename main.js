@@ -1,51 +1,139 @@
+import {BASE_URL} from "./config.js"
+
 const API_KEY = "f6e1faa9"
-const BASE_URL = `https://www.omdbapi.com/?apikey=${API_KEY}&`;
+/*const BASE_URL = `https://www.omdbapi.com/?apikey=${API_KEY}&`;*/
 
 const API_URL = BASE_URL + API_KEY;
 
-const PROVA_URL = API_URL + '&s=marvel';
+const PROVA_URL = API_URL + '&s=marvel&type=movie';
 
-const CONTENT_TYPE = {
+export const CONTENT_TYPE = {
     MOVIE: "movie",
     SERIES: "series",
     EPISODE: "episode",
+
 }
-
-const main = document.getElementById("main")
-
-const getMovies = (url) => {
-
+/*
+const getMovies = (s, type) => {
+    const url = BASE_URL + `s=${s}&type=${type}`;
     fetch(url)
         .then((response) => response.json())
         .then((results) => {
-        console.log(results)
-           viewItems(results.Search)
-    })
+            const items = results.Search
+            console.log(results)
+            viewItems(results.Search)
+        })
+};*/
+
+export const getMovies = async (s, type) => {
+    const url = BASE_URL + `s=${s}&type=${type}`;
+    const response = await fetch(url);
+    const result = await response.json();
+    const items = result.Search;
+    viewItems(items);
+};
+
+export const getSeries = async (s, type) => {
+    const url = BASE_URL + `s=${s}&type=${type}`;
+    const response = await fetch(url);
+    const result = await response.json();
+    const items = result.Search;
+    viewItems2(items);
 };
 
 const viewItems = (items) => {
-    main.innerHTML ='';
 
-    items.map ((movie) => {
-    const {Poster, Title, Plot, Genre, Runtime} = movie;
-    const movieOBJ = document.createElement('div');
-    movieOBJ.classList.add('movie');
-    movieOBJ.innerHTML = 
-    `<img src="${Poster}" alt="${Title}">
-            <div class="movie-info">
-                <h3>"${Title}"</h3>
-                <span>${Runtime} | ${Genre}</span>
-            </div>
+    let indice = 1;
 
-            <div class="riassunto">
-                <p>${Plot}</p>
-            </div>
-        </div>`
-    main.appendChild(movieOBJ)
-    })
+    items.map((item) => {
+        //Creo il movie all'interno del DOM
+        createMovie(item, indice);
+        indice++;
+    });
 };
 
-getMovies(PROVA_URL);
+const createMovie = (movie, i) => {
+
+    const div = document.getElementById(`movie${i}`);
+    const img = document.getElementById(`img${i}`);
+ /* const anno = document.getElementById(`film-anno-${i}`);  */
+    const titolo = document.getElementById(`movie-info${i}`);
+
+    const h3 = document.createElement("h3");
+    const node = document.createTextNode(movie.Title);
+    h3.appendChild(node);
+    div.replaceChild(h3, titolo);
+
+ /*   const para = document.createElement("p");
+    const node2 = document.createTextNode(movie.Year);
+    para.appendChild(node2);
+    div.replaceChild(para, anno); */
+
+    img.src = `${movie.Poster}`;
+
+};
+
+const viewItems2 = (items) => {
+
+    let indice = 1;
+
+    items.map((item) => {
+        //Creo il movie all'interno del DOM
+        createSerie(item, indice);
+        indice++;
+    });
+};
+
+const createSerie = (serie, i) => {
+
+    const div = document.getElementById(`serie${i}`);
+    const img = document.getElementById(`imgs${i}`);
+ /* const anno = document.getElementById(`film-anno-${i}`);  */
+    const titolo = document.getElementById(`serie-info${i}`);
+
+    const h3 = document.createElement("h3");
+    const node = document.createTextNode(serie.Title);
+    h3.appendChild(node);
+    div.replaceChild(h3, titolo);
+
+ /*   const para = document.createElement("p");
+    const node2 = document.createTextNode(movie.Year);
+    para.appendChild(node2);
+    div.replaceChild(para, anno); */
+
+    img.src = `${serie.Poster}`;
+   
+
+};
+
+const getMovieDetails = async (codice) => {
+
+    const url = BASE_URL + `i=${codice}`;
+    const response = await fetch(url);
+    const result = await response.json();
+    const items = result.Search;
+
+}   
+
+const createMovieDetails = (movie, i) => {
+    const trama = document.getElementById(`movie-riassunto${i}`);
+    const p = document.createElement("p");
+    const node = document.createTextNode(movie.Plot);
+    p.appendChild(node)
+    trama.replaceChild(p, trama);
+}
+
+
+/* w3 School
+
+const para = document.createElement("p");
+const node = document.createTextNode("This is new.");
+para.appendChild(node);
+
+const element = document.getElementById("div1");
+element.appendChild(para);  */
+
+
 
 
 /* FETCH */

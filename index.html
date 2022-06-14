@@ -24,27 +24,30 @@
         <!-- Menu -->
         <ul class="navbar">
             <li><a href="#home" class="home-active">Home</a></li>
-            <li><a href="#film">Film</a></li>
-            <li><a href="#serietv">Serie TV</a></li>
+            <li><a href="#film">Movies</a></li>
+            <li><a href="#serietv">TV Shows</a></li>
         </ul>
-        <!--  <a href="#" class="btn">Accedi</a> -->
-        <form id="form">
+        <a href="#random" id="btn" onclick="generaParametro()">Random</a>
+
+        <!-- <form id="form">
             <input type="text" placeholder="Cerca..." id="search" class="search">
-        </form>
+        </form> -->
 
     </header>
 
     <!-- Home -->
     <section class="home swiper" id="home">
 
-        <!-- Slide 1 -->
+
         <div class="swiper-wrapper">
+
+            <!-- Slide 1 -->
             <div class="swiper-slide container">
-                <img src="img/home1.jpg" alt="">
+                <img src="img/home5.jpg" alt="">
                 <div class="home-text">
                     <span>Marvel Universe Week</span>
-                    <h1>Venom:<br>La furia di Carnage</h1>
-                    <a href="#" class="play">
+                    <h1>Doctor Strange <br>in the Multiverse of Madness </h1>
+                    <a href="https://www.youtube.com/watch?v=Rt_UqUm38BI" target="_blank" class="play">
                         <i class='bx bx-play'></i>
                     </a>
                 </div>
@@ -52,11 +55,11 @@
 
             <!-- Slide 2 -->
             <div class="swiper-slide container">
-                <img src="img/home2.jpg" alt="">
+                <img src="img/home6.jpg" alt="">
                 <div class="home-text">
                     <span>Marvel Universe Week</span>
-                    <h1>Avengers: <br>Infinity War</h1>
-                    <a href="#" class="play">
+                    <h1>Moon knight<br></h1>
+                    <a href="https://www.youtube.com/watch?v=x7Krla_UxRg" target="_blank" class="play">
                         <i class='bx bx-play'></i>
                     </a>
                 </div>
@@ -68,11 +71,39 @@
                 <div class="home-text">
                     <span>Marvel Universe Week</span>
                     <h1>Spider-Man: <br>No Way Home</h1>
-                    <a href="#" class="play">
+                    <a href="https://www.youtube.com/watch?v=WgU7P6o-GkM" target="_blank" class="play">
                         <i class='bx bx-play'></i>
                     </a>
                 </div>
             </div>
+
+            <!-- Slide 4 -->
+            <div class="swiper-slide container">
+                <img src="img/home4.jpg" alt="">
+                <div class="home-text">
+                    <span>Marvel Universe Week</span>
+                    <h1>Shang-Chi<br>and the legend of the ten rings</h1>
+                    <a href="https://www.youtube.com/watch?v=giWIr7U1deA" target="_blank" class="play">
+                        <i class='bx bx-play'></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="swiper-slide container">
+                <img src="img/home7.png" alt="">
+                <div class="home-text">
+                    <span>Marvel Universe Week</span>
+                    <h1>Avengers: <br>Endgame</h1>
+                    <a href="https://www.youtube.com/watch?v=TcMBFSGVi1c" target="_blank" class="play">
+                        <i class='bx bx-play'></i>
+                    </a>
+                </div>
+            </div>
+
+
+
+
         </div>
 
         <div class="swiper-pagination"></div>
@@ -81,7 +112,7 @@
 
 
     <section id="film"></section>
-    <h2 class="tipologia">Film</h2>
+    <h2 class="tipologia">Movies</h2>
 
     <!-- Film -->
 
@@ -101,8 +132,13 @@
                 <h3>Titolo</h3>
             </div>
 
-            <div id="movie-riassunto1">
-                <p>Trama</p>
+            <div id="movie-info1">
+                <p><b>Plot:</b></p>
+                <p id="movie-riassunto1">Trama trama trama</p>
+                <hr>
+                <p id="movie-anno1">1234</p>
+                <p id="movie-genere1">Genere</p>
+                <p id="movie-durata1">9999 min</p>
             </div>
         </div>
         <!-------------------------------------------------------------------------->
@@ -115,8 +151,13 @@
                 <h3>Titolo</h3>
             </div>
 
-            <div id="movie-riassunto2">
-                <p>Trama</p>
+            <div id="movie-info2">
+                <p><b>Plot:</b></p>
+                <p id="movie-riassunto2">Trama trama trama</p>
+                <hr>
+                <p id="movie-anno2">1234</p>
+                <p id="movie-genere2">Genere</p>
+                <p id="movie-durata2">9999 min</p>
             </div>
         </div>
         <!-------------------------------------------------------------------------->
@@ -129,8 +170,13 @@
                 <h3>Titolo</h3>
             </div>
 
-            <div id="movie-riassunto3">
-                <p>Trama</p>
+            <div id="movie-info3">
+                <p><b>Plot:</b></p>
+                <p id="movie-riassunto3">Trama trama trama</p>
+                <hr>
+                <p id="movie-anno3">1234</p>
+                <p id="movie-genere3">Genere</p>
+                <p id="movie-durata3">9999 min</p>
             </div>
         </div>
         <!-------------------------------------------------------------------------->
@@ -143,8 +189,13 @@
                 <h3>Titolo</h3>
             </div>
 
-            <div id="movie-riassunto4">
-                <p>Trama</p>
+            <div id="movie-info4">
+                <p><b>Plot:</b></p>
+                <p id="movie-riassunto4">Trama trama trama</p>
+                <hr>
+                <p id="movie-anno4">1234</p>
+                <p id="movie-genere4">Genere</p>
+                <p id="movie-durata4">9999 min</p>
             </div>
         </div>
         <!-------------------------------------------------------------------------->
@@ -157,8 +208,13 @@
                 <h3>Titolo</h3>
             </div>
 
-            <div id="movie-riassunto5">
-                <p>Trama</p>
+            <div id="movie-info5">
+                <p><b>Plot:</b></p>
+                <p id="movie-riassunto5">Trama trama trama</p>
+                <hr>
+                <p id="movie-anno5">1234</p>
+                <p id="movie-genere5">Genere</p>
+                <p id="movie-durata5">9999 min</p>
             </div>
         </div>
         <!-------------------------------------------------------------------------->
@@ -171,8 +227,13 @@
                 <h3>Titolo</h3>
             </div>
 
-            <div id="movie-riassunto6">
-                <p>Trama</p>
+            <div id="movie-info6">
+                <p><b>Plot:</b></p>
+                <p id="movie-riassunto6">Trama trama trama</p>
+                <hr>
+                <p id="movie-anno6">1234</p>
+                <p id="movie-genere6">Genere</p>
+                <p id="movie-durata6">9999 min</p>
             </div>
         </div>
         <!-------------------------------------------------------------------------->
@@ -185,8 +246,13 @@
                 <h3>Titolo</h3>
             </div>
 
-            <div id="movie-riassunto7">
-                <p>Trama</p>
+            <div id="movie-info7">
+                <p><b>Plot:</b></p>
+                <p id="movie-riassunto7">Trama trama trama</p>
+                <hr>
+                <p id="movie-anno7">1234</p>
+                <p id="movie-genere7">Genere</p>
+                <p id="movie-durata7">9999 min</p>
             </div>
         </div>
         <!-------------------------------------------------------------------------->
@@ -199,8 +265,13 @@
                 <h3>Titolo</h3>
             </div>
 
-            <div id="movie-riassunto8">
-                <p>Trama</p>
+            <div id="movie-info8">
+                <p><b>Plot:</b></p>
+                <p id="movie-riassunto8">Trama trama trama</p>
+                <hr>
+                <p id="movie-anno8">1234</p>
+                <p id="movie-genere8">Genere</p>
+                <p id="movie-durata8">9999 min</p>
             </div>
         </div>
         <!-------------------------------------------------------------------------->
@@ -213,8 +284,13 @@
                 <h3>Titolo</h3>
             </div>
 
-            <div id="movie-riassunto9">
-                <p>Trama</p>
+            <div id="movie-info9">
+                <p><b>Plot:</b></p>
+                <p id="movie-riassunto9">Trama trama trama</p>
+                <hr>
+                <p id="movie-anno9">1234</p>
+                <p id="movie-genere9">Genere</p>
+                <p id="movie-durata9">9999 min</p>
             </div>
         </div>
         <!-------------------------------------------------------------------------->
@@ -227,15 +303,23 @@
                 <h3>Titolo</h3>
             </div>
 
-            <div id="movie-riassunto10">
-                <p>Trama</p>
+            <div id="movie-info10">
+                <p><b>Plot:</b></p>
+                <p id="movie-riassunto10">Trama trama trama</p>
+                <hr>
+                <p id="movie-anno10">1234</p>
+                <p id="movie-genere10">Genere</p>
+                <p id="movie-durata10">9999 min</p>
             </div>
         </div>
+
         <!-------------------------------------------------------------------------->
+        <!-------------------------------------------------------------------------->
+
         </section>
 
         <section id="serietv">
-            <h2 class="tipologia">Serie TV</h2>
+            <h2 class="tipologia">TV Shows</h2>
 
             <div id="container">
 
@@ -248,8 +332,13 @@
                         <h3>Titolo</h3>
                     </div>
 
-                    <div id="serie-riassunto1">
-                        <p>Trama</p>
+                    <div id="serie-info1">
+                        <p><b>Plot:</b></p>
+                        <p id="serie-riassunto1">Trama trama trama</p>
+                        <hr>
+                        <p id="serie-anno1">1234</p>
+                        <p id="serie-genere1">Genere</p>
+                        <p id="serie-durata1">9999 min</p>
                     </div>
                 </div>
                 <!-------------------------------------------------------------------------->
@@ -262,8 +351,13 @@
                         <h3>Titolo</h3>
                     </div>
 
-                    <div id="serie-riassunto2">
-                        <p>Trama</p>
+                    <div id="serie-info2">
+                        <p><b>Plot:</b></p>
+                        <p id="serie-riassunto2">Trama trama trama</p>
+                        <hr>
+                        <p id="serie-anno2">1234</p>
+                        <p id="serie-genere2">Genere</p>
+                        <p id="serie-durata2">9999 min</p>
                     </div>
                 </div>
                 <!-------------------------------------------------------------------------->
@@ -276,8 +370,13 @@
                         <h3>Titolo</h3>
                     </div>
 
-                    <div id="serie-riassunto3">
-                        <p>Trama</p>
+                    <div id="serie-info3">
+                        <p><b>Plot:</b></p>
+                        <p id="serie-riassunto3">Trama trama trama</p>
+                        <hr>
+                        <p id="serie-anno3">1234</p>
+                        <p id="serie-genere3">Genere</p>
+                        <p id="serie-durata3">9999 min</p>
                     </div>
                 </div>
                 <!-------------------------------------------------------------------------->
@@ -290,8 +389,13 @@
                         <h3>Titolo</h3>
                     </div>
 
-                    <div id="serie-riassunto4">
-                        <p>Trama</p>
+                    <div id="serie-info4">
+                        <p><b>Plot:</b></p>
+                        <p id="serie-riassunto4">Trama trama trama</p>
+                        <hr>
+                        <p id="serie-anno4">1234</p>
+                        <p id="serie-genere4">Genere</p>
+                        <p id="serie-durata4">9999 min</p>
                     </div>
                 </div>
                 <!-------------------------------------------------------------------------->
@@ -304,8 +408,13 @@
                         <h3>Titolo</h3>
                     </div>
 
-                    <div id="serie-riassunto5">
-                        <p>Trama</p>
+                    <div id="serie-info5">
+                        <p><b>Plot:</b></p>
+                        <p id="serie-riassunto5">Trama trama trama</p>
+                        <hr>
+                        <p id="serie-anno5">1234</p>
+                        <p id="serie-genere5">Genere</p>
+                        <p id="serie-durata5">9999 min</p>
                     </div>
                 </div>
                 <!-------------------------------------------------------------------------->
@@ -318,8 +427,13 @@
                         <h3>Titolo</h3>
                     </div>
 
-                    <div id="serie-riassunto6">
-                        <p>Trama</p>
+                    <div id="serie-info6">
+                        <p><b>Plot:</b></p>
+                        <p id="serie-riassunto6">Trama trama trama</p>
+                        <hr>
+                        <p id="serie-anno6">1234</p>
+                        <p id="serie-genere6">Genere</p>
+                        <p id="serie-durata6">9999 min</p>
                     </div>
                 </div>
                 <!-------------------------------------------------------------------------->
@@ -332,8 +446,13 @@
                         <h3>Titolo</h3>
                     </div>
 
-                    <div id="serie-riassunto7">
-                        <p>Trama</p>
+                    <div id="serie-info7">
+                        <p><b>Plot:</b></p>
+                        <p id="serie-riassunto7">Trama trama trama</p>
+                        <hr>
+                        <p id="serie-anno7">1234</p>
+                        <p id="serie-genere7">Genere</p>
+                        <p id="serie-durata7">9999 min</p>
                     </div>
                 </div>
                 <!-------------------------------------------------------------------------->
@@ -346,8 +465,13 @@
                         <h3>Titolo</h3>
                     </div>
 
-                    <div id="serie-riassunto8">
-                        <p>Trama</p>
+                    <div id="serie-info8">
+                        <p><b>Plot:</b></p>
+                        <p id="serie-riassunto8">Trama trama trama</p>
+                        <hr>
+                        <p id="serie-anno8">1234</p>
+                        <p id="serie-genere8">Genere</p>
+                        <p id="serie-durata8">9999 min</p>
                     </div>
                 </div>
                 <!-------------------------------------------------------------------------->
@@ -360,8 +484,13 @@
                         <h3>Titolo</h3>
                     </div>
 
-                    <div id="serie-riassunto9">
-                        <p>Trama</p>
+                    <div id="serie-info9">
+                        <p><b>Plot:</b></p>
+                        <p id="serie-riassunto9">Trama trama trama</p>
+                        <hr>
+                        <p id="serie-anno9">1234</p>
+                        <p id="serie-genere9">Genere</p>
+                        <p id="serie-durata9">9999 min</p>
                     </div>
                 </div>
                 <!-------------------------------------------------------------------------->
@@ -374,36 +503,105 @@
                         <h3>Titolo</h3>
                     </div>
 
-                    <div id="serie-riassunto10">
-                        <p>Trama</p>
+                    <div id="serie-info10">
+                        <p><b>Plot:</b></p>
+                        <p id="serie-riassunto10">Trama trama trama</p>
+                        <hr>
+                        <p id="serie-anno10">1234</p>
+                        <p id="serie-genere10">Genere</p>
+                        <p id="serie-durata10">9999 min</p>
                     </div>
                 </div>
                 <!-------------------------------------------------------------------------->
 
 
             </div>
+
+
+    </div>
+    </section>
+<!--
+    <section id="random">
+        <h2 class="tipologia">Random</h2>
+
+        <div id="container2">
+
+            <div id="random">
+                <img id="imgr"
+                    src="https://m.media-amazon.com/images/M/MV5BYTc3ZTAwYTgtMmM4ZS00MDRiLWI2Y2EtYmRiZmE0YjkzMGY1XkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_SX300.jpg"
+                    alt="">
+
+                <div id="random-info">
+                    <h3>Titolo</h3>
+                </div>
+
+                <div id="random-info">
+                    <p><b>Plot:</b></p>
+                    <p id="random-riassunto">Trama trama trama</p>
+                    <hr>
+                    <p id="random-anno">1234</p>
+                    <p id="random-genere">Genere</p>
+                    <p id="random-durata">9999 min</p>
+                </div>
+            </div>
+
         </div>
-        </section>
+    </section>
 
-    
+    -->
 
+    <!-- Link Slider -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    
+
+    <!-- Script API Omdb -->
     <script type="module">
-        import { getMovies,getSeries } from "./main.js";
+
+        import { getMovies, getSeries, getRandom } from "./main.js";
         import { CONTENT_TYPE } from "./main.js";
 
         getMovies("Marvel", CONTENT_TYPE.MOVIE);
-        getSeries("Marvel",CONTENT_TYPE.SERIES);
+        getSeries("Marvel", CONTENT_TYPE.SERIES);
+        getRandom("Batman", CONTENT_TYPE.MOVIE);
+
+
+    </script>
+
+    <script>
+
+        const arrayParametri = [
+            "Lego",
+            "Marvel",
+            "Batman",
+            "Impossible",
+            "Star%20wars",
+            "Star%20Trek",
+            "Alien",
+            "Spider",
+            "superman",
+            "Toy",
+            "king",
+            "dog",
+            "cat",
+            "Gun",
+            "Dragon%20Ball"
+        ];
+
+        const generaParametro = () => {
+            let numeroRandom = Math.floor((Math.random() * arrayParametri.length));
+            let parametroRandom = arrayParametri[numeroRandom];
+            console.log(parametroRandom);
+        }
 
     </script>
 
 </body>
 
+
+
 <!-- Footer -->
 <footer>
     <div class="copyright">
-        <p>MovieApp © Tutti i diritti riservati</p>
+        <p>MovieApp © All rights reserved</p>
     </div>
 </footer>
 

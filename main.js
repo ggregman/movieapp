@@ -1,18 +1,16 @@
-import {BASE_URL} from "./config.js"
+import { BASE_URL } from "./config.js"
 
 const API_KEY = "f6e1faa9"
-/*const BASE_URL = `https://www.omdbapi.com/?apikey=${API_KEY}&`;*/
 
 const API_URL = BASE_URL + API_KEY;
 
-const PROVA_URL = API_URL + '&s=marvel&type=movie';
+// const PROVA_URL = API_URL + '&s=marvel&type=movie';
 
 export const CONTENT_TYPE = {
     MOVIE: "movie",
     SERIES: "series",
-    EPISODE: "episode",
-
 }
+
 /*
 const getMovies = (s, type) => {
     const url = BASE_URL + `s=${s}&type=${type}`;
@@ -23,16 +21,135 @@ const getMovies = (s, type) => {
             console.log(results)
             viewItems(results.Search)
         })
-};*/
+};
+*/
 
+// Funzione che mi fa la fetch dei film 
 export const getMovies = async (s, type) => {
-    const url = BASE_URL + `s=${s}&type=${type}`;
+    const url = BASE_URL + `s=${s}&type=${type}`;  // ("Marvel", "CONTENT_TYPE.MOVIE")
     const response = await fetch(url);
     const result = await response.json();
     const items = result.Search;
     viewItems(items);
 };
 
+const viewItems = (items) => {
+
+    let indice = 1;
+
+    // Ciclo nell'array
+    items.map((item) => {
+        // per ogni item nell'array chiamo la funzione che mi crea le card
+        createMovie(item, indice);
+        indice++;
+    });
+};
+
+// Dichiaro la funzione che mi crea la card personalizzata (con parametro di ricerca -s ho accesso solo a: titolo, tipo, codice, poster, anno)
+const createMovie = (movie, indice) => {
+
+    // Scelgo e creo una variabile in cui voglio posizionarmi
+    const div = document.getElementById(`movie${indice}`);
+
+    // Scelgo più precisamente cosa voglio modificare
+    const titolo = document.getElementById(`movie-info${indice}`); // es. movie-info1 (titolo della prima card movie)
+
+    // Creo un elemento vuoto
+    const h3 = document.createElement("h3");
+
+    // Salvo in una variabile il contenuto che mi serve
+    const node = document.createTextNode(movie.Title);
+
+    // "Appendo" all'elemento vuoto il contenuto appena salvato nella variabile
+    h3.appendChild(node);
+
+    // "Rimpiazzo" all'interno della posizione che ho scelto mettendo come parametri "nuovo","vecchio"
+    div.replaceChild(h3, titolo);
+
+    const img = document.getElementById(`img${indice}`);
+    img.src = `${movie.Poster}`;
+
+
+    // Dichiaro la funzione che mi permette di accedere a più informazione come: genere, durata, trama etc.
+    const createMovieDetails = (item, indice) => {
+
+        const div = document.getElementById(`movie-info${indice}`);
+        const trama = document.getElementById(`movie-riassunto${indice}`);
+        const genere = document.getElementById(`movie-genere${indice}`);
+        const durata = document.getElementById(`movie-durata${indice}`);
+        const anno = document.getElementById(`movie-anno${indice}`);
+
+        const p1 = document.createElement('p');
+        const node1 = document.createTextNode(item.Plot);
+        p1.appendChild(node1);
+        div.replaceChild(p1, trama);
+
+        const p2 = document.createElement('p');
+        const node2 = document.createTextNode(item.Genre);
+        p2.appendChild(node2);
+        div.replaceChild(p2, genere);
+
+        const p3 = document.createElement('p');
+        const node3 = document.createTextNode(`Runtime: ${item.Runtime}`);
+        p3.appendChild(node3);
+        div.replaceChild(p3, durata);
+
+        const p4 = document.createElement('p');
+        const node4 = document.createTextNode(`Year: ${item.Year}`);
+        p4.appendChild(node4);
+        div.replaceChild(p4, anno);
+
+    }
+
+    // Funzione che mi fa la fetch del singolo movie tramite "imdbID"
+    const viewMovieDetails = (codice) => {
+
+        const url1 = BASE_URL + `i=${codice}&plot=short`;
+        fetch(url1)
+            .then((response1) => response1.json())
+            .then((results1) => {
+                const item = results1;
+
+                createMovieDetails(item, indice);
+
+            });
+    };
+
+    (viewMovieDetails(movie.imdbID));
+
+};
+
+/* 13/06/2022 14:28
+
+const viewMovieDetails = async (codice) => {
+    
+    const url = BASE_URL + `i=${codice}`;
+    const response = await fetch(url);
+    const result = await response.json();
+    const item = result.Search;
+    createMovieDetails(item, indice); 
+    
+}
+
+const createMovieDetails = (item, i) => {
+    let indice = 1;
+
+    const div = document.getElementById(`movie${i}`);
+    const trama = document.getElementById(`movie-riassunto${i}`);
+
+    const p = document.createElement('p');
+    const node = document.createTextNode(item.Plot);
+    p.appendChild(node);
+    div.replaceChild(p, trama);
+
+    indice ++;
+    
+}
+
+*/
+
+
+// Funzione che svolge lo stesso obiettivo di getMovies sopra
 export const getSeries = async (s, type) => {
     const url = BASE_URL + `s=${s}&type=${type}`;
     const response = await fetch(url);
@@ -41,37 +158,93 @@ export const getSeries = async (s, type) => {
     viewItems2(items);
 };
 
-const viewItems = (items) => {
+const viewItems2 = (items) => {
 
     let indice = 1;
 
+    // Ciclo nell'array
     items.map((item) => {
-        //Creo il movie all'interno del DOM
-        createMovie(item, indice);
+        // per ogni item nell'array chiamo la funzione che mi crea le card
+        createSerie(item, indice);
         indice++;
     });
 };
 
-const createMovie = (movie, i) => {
+// Dichiaro la funzione che mi crea la card personalizzata (con parametro di ricerca -s ho accesso solo a: titolo, tipo, codice, poster, anno)
+const createSerie = (serie, indice) => {
 
-    const div = document.getElementById(`movie${i}`);
-    const img = document.getElementById(`img${i}`);
- /* const anno = document.getElementById(`film-anno-${i}`);  */
-    const titolo = document.getElementById(`movie-info${i}`);
+    // Scelgo e creo una variabile in cui voglio posizionarmi
+    const div = document.getElementById(`serie${indice}`);
 
+    // Scelgo più precisamente cosa voglio modificare
+    const titolo = document.getElementById(`serie-info${indice}`); // es. serie-info1 (titolo della prima card serie)
+
+    // Creo un elemento vuoto
     const h3 = document.createElement("h3");
-    const node = document.createTextNode(movie.Title);
+
+    // Salvo in una variabile il contenuto che mi serve
+    const node = document.createTextNode(serie.Title);
+
+    // "Appendo" all'elemento vuoto il contenuto appena salvato nella variabile
     h3.appendChild(node);
+
+    // "Rimpiazzo" all'interno della posizione che ho scelto mettendo come parametri "nuovo","vecchio"
     div.replaceChild(h3, titolo);
 
- /*   const para = document.createElement("p");
-    const node2 = document.createTextNode(movie.Year);
-    para.appendChild(node2);
-    div.replaceChild(para, anno); */
+    const img = document.getElementById(`imgs${indice}`);
+    img.src = `${serie.Poster}`;
 
-    img.src = `${movie.Poster}`;
+
+    // Dichiaro la funzione che mi permette di accedere a più informazione come: genere, durata, trama etc.
+    const createSerieDetails = (item, indice) => {
+
+        const div = document.getElementById(`serie-info${indice}`);
+        const trama = document.getElementById(`serie-riassunto${indice}`);
+        const genere = document.getElementById(`serie-genere${indice}`);
+        const durata = document.getElementById(`serie-durata${indice}`);
+        const anno = document.getElementById(`serie-anno${indice}`);
+
+        const p1 = document.createElement('p');
+        const node1 = document.createTextNode(item.Plot);
+        p1.appendChild(node1);
+        div.replaceChild(p1, trama);
+
+        const p2 = document.createElement('p');
+        const node2 = document.createTextNode(item.Genre);
+        p2.appendChild(node2);
+        div.replaceChild(p2, genere);
+
+        const p3 = document.createElement('p');
+        const node3 = document.createTextNode(`Runtime: ${item.Runtime}`);
+        p3.appendChild(node3);
+        div.replaceChild(p3, durata);
+
+        const p4 = document.createElement('p');
+        const node4 = document.createTextNode(`Year: ${item.Year}`);
+        p4.appendChild(node4);
+        div.replaceChild(p4, anno);
+
+    }
+
+    // Funzione che mi fa la fetch del singolo serie tramite "imdbID"
+    const viewSerieDetails = (codice) => {
+
+        const url1 = BASE_URL + `i=${codice}&plot=short`;
+        fetch(url1)
+            .then((response1) => response1.json())
+            .then((results1) => {
+                const item = results1;
+
+                createSerieDetails(item, indice);
+
+            });
+    };
+
+    (viewSerieDetails(serie.imdbID));
 
 };
+
+/*
 
 const viewItems2 = (items) => {
 
@@ -88,7 +261,6 @@ const createSerie = (serie, i) => {
 
     const div = document.getElementById(`serie${i}`);
     const img = document.getElementById(`imgs${i}`);
- /* const anno = document.getElementById(`film-anno-${i}`);  */
     const titolo = document.getElementById(`serie-info${i}`);
 
     const h3 = document.createElement("h3");
@@ -96,33 +268,21 @@ const createSerie = (serie, i) => {
     h3.appendChild(node);
     div.replaceChild(h3, titolo);
 
- /*   const para = document.createElement("p");
-    const node2 = document.createTextNode(movie.Year);
-    para.appendChild(node2);
-    div.replaceChild(para, anno); */
-
     img.src = `${serie.Poster}`;
-   
-
 };
 
-const getMovieDetails = async (codice) => {
+*/
 
-    const url = BASE_URL + `i=${codice}`;
-    const response = await fetch(url);
+/*
+
+const createMovieDetails = (movie) => {
+    const response = await fetch(movie);
     const result = await response.json();
-    const items = result.Search;
 
-}   
-
-const createMovieDetails = (movie, i) => {
-    const trama = document.getElementById(`movie-riassunto${i}`);
-    const p = document.createElement("p");
-    const node = document.createTextNode(movie.Plot);
-    p.appendChild(node)
-    trama.replaceChild(p, trama);
+    return movie.Plot;
+    
 }
-
+*/
 
 /* w3 School
 
@@ -171,18 +331,91 @@ const viewItems = (items) => {
 };
 
 /**/
-
+/*
 form.addEventListener('submit', testo => {
     testo.preventDefault();
     const cercaMovie = testo.value;
     if (cercaMovie) {
-        apiList(API_URL + cercaMovie)
+        getMovies(cercaMovie);
+        getSeries(cercaMovie);
     } else {
-        console.log(apiList("ciao"))
+        console.log("ciao")
     }
 
-})
+})*/
 
+/* Random */
+
+// Funzione che mi fa la fetch random 
+
+export const getRandom = (parametro) => {
+
+    const url1 = BASE_URL + `t=${parametro}&plot=short`;
+    fetch(url1)
+        .then((response1) => response1.json())
+        .then((results1) => {
+            const item = results1;
+
+            createRandom(item);
+
+        });
+};
+
+
+
+// Dichiaro la funzione che mi crea la card personalizzata
+const createRandom = (item) => {
+
+    // Scelgo e creo una variabile in cui voglio posizionarmi
+    const div = document.getElementById(`random`);
+
+    // Scelgo più precisamente cosa voglio modificare
+    const titolo = document.getElementById(`random-info`);
+
+    // Creo un elemento vuoto
+    const h3 = document.createElement("h3");
+
+    // Salvo in una variabile il contenuto che mi serve
+    const node = document.createTextNode(item.Title);
+
+    // "Appendo" all'elemento vuoto il contenuto appena salvato nella variabile
+    h3.appendChild(node);
+
+    // "Rimpiazzo" all'interno della posizione che ho scelto mettendo come parametri "nuovo","vecchio"
+    div.replaceChild(h3, titolo);
+
+    const img = document.getElementById(`imgr`);
+    img.src = `${item.Poster}`;
+
+    const trama = document.getElementById(`random-riassunto`);
+    const genere = document.getElementById(`random-genere`);
+    const durata = document.getElementById(`random-durata`);
+    const anno = document.getElementById(`random-anno`);
+
+    const p1 = document.createElement('p');
+    const node1 = document.createTextNode(item.Plot);
+    p1.appendChild(node1);
+    div.replaceChild(p1, trama);
+
+    const p2 = document.createElement('p');
+    const node2 = document.createTextNode(item.Genre);
+    p2.appendChild(node2);
+    div.replaceChild(p2, genere);
+
+    const p3 = document.createElement('p');
+    const node3 = document.createTextNode(`Runtime: ${item.Runtime}`);
+    p3.appendChild(node3);
+    div.replaceChild(p3, durata);
+
+    const p4 = document.createElement('p');
+    const node4 = document.createTextNode(`Year: ${item.Year}`);
+    p4.appendChild(node4);
+    div.replaceChild(p4, anno);
+
+};
+
+
+/* -------------------------------------------------------- */
 
 let header = document.querySelector('header');
 let menu = document.querySelector('#menu-icon');
@@ -215,5 +448,9 @@ var swiper = new Swiper(".home", {
         clickable: true,
     },
 });
+
+
+
+
 
 

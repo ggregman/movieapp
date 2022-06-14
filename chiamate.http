@@ -4,7 +4,7 @@ GET https://www.omdbapi.com/?apikey=f6e1faa9&s=terminator HTTP/1.1
 ###
 
 // Chiamata di dettaglio di un singolo movie 
-GET https://www.omdbapi.com/?apikey=f6e1faa9&i=tt0103064
+GET https://www.omdbapi.com/?apikey=f6e1faa9&i=tt4154796
 
 
 ###

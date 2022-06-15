@@ -1321,3 +1321,24 @@ hr {
 
 
 }
+
+.tasto-fondo {
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+#btn2 {
+  padding: 11px 22.5px;
+  background: var(--main-color);
+  color: var(--bg-color);
+  font-weight: 400;
+  border-radius: 8px;
+  border-width: 0;
+}
+
+#btn2:hover {
+  background-color: #006D5B;
+  cursor:pointer;
+}

@@ -417,7 +417,11 @@ export const getRandom = (parametroRandom) => {
 
 export const generaParametro = () => {
 
+    let numeroRandom;
+    let parametroRandom;
+
     const arrayParametri = [
+        "scarface",
         "Titanic",
         "E.t.",
         "Lego",
@@ -434,32 +438,34 @@ export const generaParametro = () => {
         "shrek",
         "transformers",
         "back to the future",
-        "matrix",
+        "The matrix",
         "superman",
         "Batman",
+        "The Wolf of Wall Street",
         "Impossible",
-        "Star%20wars",
-        "Star%20Trek",
+        "Star Wars",
+        "Star Trek",
         "Alien",
         "Spider-man",
         "king",
         "dog",
         "cat",
-        "Gun",
-        "Dragon%20Ball",
-
+        "top Gun",
+        "The truman show",
+        "Dragon Ball",
     ];
 
-    let numeroRandom = Math.floor((Math.random() * arrayParametri.length));
-    let parametroRandom = arrayParametri[numeroRandom];
+    numeroRandom = Math.floor((Math.random() * arrayParametri.length));
+    parametroRandom = arrayParametri[numeroRandom];
     console.log(parametroRandom);
 
     getRandom(parametroRandom);
 
 }
 
-let button = document.querySelector('#btn');
+const button = document.querySelector('#btn');
 button.addEventListener('click', generaParametro());
+
 
 
 /* -------------------------------------------------------- */

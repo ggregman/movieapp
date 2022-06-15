@@ -1022,9 +1022,9 @@ h3 {
 }
 /* ---------------------------------------------------- */
 
-/* RANDOM 
+/* RANDOM */
 
-#random {
+#random-movie {
   width: 250px;
   margin: 15px;
   background-color: var(--bg-color);
@@ -1033,11 +1033,11 @@ h3 {
   overflow: hidden;
 }
 
-#random:hover {
+#random-movie:hover {
   box-shadow: 0px 0px 10px 2.5px var(--main-color);
 }
 
-#random img {
+#random-movie img {
   width: 100%;
 }
 
@@ -1054,7 +1054,7 @@ h3 {
   transition:transform 0.5s ease-in;
 }
 
-#random:hover #random-info {
+#random-movie:hover #random-info {
   transform: translateY(0);
 }
 
@@ -1067,7 +1067,7 @@ h3 {
   font-size: 24px;
   cursor: pointer;
   z-index: 1000001;
-  display:none;
+  display: none;
 }
 
 
@@ -1232,6 +1232,12 @@ hr {
   margin-top: 50px;
 }
 
+@media (max-width: 2560px) {
+  #menu-icon {
+    display: none;
+  }
+} 
+
 @media (max-width: 1080px) {
   .home-text {
     padding: 0 100px;
@@ -1254,6 +1260,8 @@ hr {
   .home-text h1 {
     font-size: 3rem;
   }
+
+  
 }
 
 @media (max-width: 774px) {

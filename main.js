@@ -348,71 +348,118 @@ form.addEventListener('submit', testo => {
 
 // Funzione che mi fa la fetch random 
 
-export const getRandom = (parametro) => {
+export const getRandom = (parametroRandom) => {
 
-    const url1 = BASE_URL + `t=${parametro}&plot=short`;
-    fetch(url1)
-        .then((response1) => response1.json())
-        .then((results1) => {
-            const item = results1;
+    const createRandom = (item) => {
+
+        // Scelgo e creo una variabile in cui voglio posizionarmi
+        const div = document.getElementById(`random-movie`);
+
+        const div2 = document.getElementById(`random-info`);
+
+        // Scelgo più precisamente cosa voglio modificare
+        const titolo = document.getElementById(`random-titolo`);
+
+        // Creo un elemento vuoto
+        const h3 = document.createElement("h3");
+
+        // Salvo in una variabile il contenuto che mi serve
+        const node = document.createTextNode(item.Title);
+
+        // "Appendo" all'elemento vuoto il contenuto appena salvato nella variabile
+        h3.appendChild(node);
+
+        // "Rimpiazzo" all'interno della posizione che ho scelto mettendo come parametri "nuovo","vecchio"
+        div.replaceChild(h3, titolo);
+
+        const img = document.getElementById(`imgr`);
+        img.src = `${item.Poster}`;
+
+        const trama = document.getElementById(`random-riassunto`);
+        const genere = document.getElementById(`random-genere`);
+        const durata = document.getElementById(`random-durata`);
+        const anno = document.getElementById(`random-anno`);
+
+        const p1 = document.createElement('p');
+        const node1 = document.createTextNode(item.Plot);
+        p1.appendChild(node1);
+        div2.replaceChild(p1, trama);
+
+        const p2 = document.createElement('p');
+        const node2 = document.createTextNode(item.Genre);
+        p2.appendChild(node2);
+        div2.replaceChild(p2, genere);
+
+        const p3 = document.createElement('p');
+        const node3 = document.createTextNode(`Runtime: ${item.Runtime}`);
+        p3.appendChild(node3);
+        div2.replaceChild(p3, durata);
+
+        const p4 = document.createElement('p');
+        const node4 = document.createTextNode(`Year: ${item.Year}`);
+        p4.appendChild(node4);
+        div2.replaceChild(p4, anno);
+
+    };
+
+    const url2 = BASE_URL + `t=${parametroRandom}&plot=short`;
+    fetch(url2)
+        .then((response2) => response2.json())
+        .then((results2) => {
+            let item = results2;
 
             createRandom(item);
 
         });
-};
+}
 
 
 
-// Dichiaro la funzione che mi crea la card personalizzata
-const createRandom = (item) => {
+export const generaParametro = () => {
 
-    // Scelgo e creo una variabile in cui voglio posizionarmi
-    const div = document.getElementById(`random`);
+    const arrayParametri = [
+        "Titanic",
+        "E.t.",
+        "Lego",
+        "Terminator%202",
+        "The lion king",
+        "The Godfather",
+        "jurassic park",
+        "harry potter",
+        "indiana jones",
+        "Pirates of the Caribbean",
+        "fight club",
+        "pulp fiction",
+        "forrest gump",
+        "shrek",
+        "transformers",
+        "back to the future",
+        "matrix",
+        "superman",
+        "Batman",
+        "Impossible",
+        "Star%20wars",
+        "Star%20Trek",
+        "Alien",
+        "Spider-man",
+        "king",
+        "dog",
+        "cat",
+        "Gun",
+        "Dragon%20Ball",
 
-    // Scelgo più precisamente cosa voglio modificare
-    const titolo = document.getElementById(`random-info`);
+    ];
 
-    // Creo un elemento vuoto
-    const h3 = document.createElement("h3");
+    let numeroRandom = Math.floor((Math.random() * arrayParametri.length));
+    let parametroRandom = arrayParametri[numeroRandom];
+    console.log(parametroRandom);
 
-    // Salvo in una variabile il contenuto che mi serve
-    const node = document.createTextNode(item.Title);
+    getRandom(parametroRandom);
 
-    // "Appendo" all'elemento vuoto il contenuto appena salvato nella variabile
-    h3.appendChild(node);
+}
 
-    // "Rimpiazzo" all'interno della posizione che ho scelto mettendo come parametri "nuovo","vecchio"
-    div.replaceChild(h3, titolo);
-
-    const img = document.getElementById(`imgr`);
-    img.src = `${item.Poster}`;
-
-    const trama = document.getElementById(`random-riassunto`);
-    const genere = document.getElementById(`random-genere`);
-    const durata = document.getElementById(`random-durata`);
-    const anno = document.getElementById(`random-anno`);
-
-    const p1 = document.createElement('p');
-    const node1 = document.createTextNode(item.Plot);
-    p1.appendChild(node1);
-    div.replaceChild(p1, trama);
-
-    const p2 = document.createElement('p');
-    const node2 = document.createTextNode(item.Genre);
-    p2.appendChild(node2);
-    div.replaceChild(p2, genere);
-
-    const p3 = document.createElement('p');
-    const node3 = document.createTextNode(`Runtime: ${item.Runtime}`);
-    p3.appendChild(node3);
-    div.replaceChild(p3, durata);
-
-    const p4 = document.createElement('p');
-    const node4 = document.createTextNode(`Year: ${item.Year}`);
-    p4.appendChild(node4);
-    div.replaceChild(p4, anno);
-
-};
+let button = document.querySelector('#btn');
+button.addEventListener('click', generaParametro());
 
 
 /* -------------------------------------------------------- */

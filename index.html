@@ -16,6 +16,7 @@
 
     <!-- Navbar -->
     <header>
+
         <a href="#" class="logo">
             <i class='bx bxs-movie'></i> MovieApp
         </a>
@@ -25,9 +26,9 @@
         <ul class="navbar">
             <li><a href="#home" class="home-active">Home</a></li>
             <li><a href="#film">Movies</a></li>
-            <li><a href="#serietv">TV Shows</a></li>
+            <li><a href="#serietv">TV Shows</a></li>    
         </ul>
-        <a href="#random" id="btn" onclick="generaParametro()">Random</a>
+        <a href="#casuale" id="btn">Random</a>
 
         <!-- <form id="form">
             <input type="text" placeholder="Cerca..." id="search" class="search">
@@ -513,25 +514,21 @@
                     </div>
                 </div>
                 <!-------------------------------------------------------------------------->
-
-
             </div>
-
-
     </div>
     </section>
-<!--
-    <section id="random">
+
+    <section id="casuale">
         <h2 class="tipologia">Random</h2>
 
         <div id="container2">
 
-            <div id="random">
+            <div id="random-movie">
                 <img id="imgr"
                     src="https://m.media-amazon.com/images/M/MV5BYTc3ZTAwYTgtMmM4ZS00MDRiLWI2Y2EtYmRiZmE0YjkzMGY1XkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_SX300.jpg"
                     alt="">
 
-                <div id="random-info">
+                <div id="random-titolo">
                     <h3>Titolo</h3>
                 </div>
 
@@ -548,7 +545,6 @@
         </div>
     </section>
 
-    -->
 
     <!-- Link Slider -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -561,36 +557,7 @@
 
         getMovies("Marvel", CONTENT_TYPE.MOVIE);
         getSeries("Marvel", CONTENT_TYPE.SERIES);
-        getRandom("Batman", CONTENT_TYPE.MOVIE);
 
-
-    </script>
-
-    <script>
-
-        const arrayParametri = [
-            "Lego",
-            "Marvel",
-            "Batman",
-            "Impossible",
-            "Star%20wars",
-            "Star%20Trek",
-            "Alien",
-            "Spider",
-            "superman",
-            "Toy",
-            "king",
-            "dog",
-            "cat",
-            "Gun",
-            "Dragon%20Ball"
-        ];
-
-        const generaParametro = () => {
-            let numeroRandom = Math.floor((Math.random() * arrayParametri.length));
-            let parametroRandom = arrayParametri[numeroRandom];
-            console.log(parametroRandom);
-        }
 
     </script>
 
